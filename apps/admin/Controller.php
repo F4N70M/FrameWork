@@ -6,14 +6,14 @@
 
 namespace apps\admin;
 
-use Fw\DI\DI;
-use Fw\Helper\Common as Helper;
+use fw\DI\DI;
+use fw\Helper\Common as Helper;
 
 /**
  * Class Controller
  * @package apps\main
  */
-class Controller extends \Fw\App\Controller
+class Controller extends \fw\App\Controller
 {
 	public $model;
 	public $view;

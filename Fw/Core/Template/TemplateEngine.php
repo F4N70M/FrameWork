@@ -4,7 +4,7 @@
 	 * @version: 1.0
 	 */
 	
-	namespace Fw\Core\Template;
+	namespace fw\Core\Template;
 	
 	class TemplateEngine
 	{

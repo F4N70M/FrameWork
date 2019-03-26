@@ -4,14 +4,14 @@
  * @version: 1.0
  */
 
-namespace Fw\Modules\Router;
+namespace fw\Modules\Router;
 
-use Fw\Core\Router\Router;
-use Fw\modules\AbstractProvider;
+use fw\Core\Router\Router;
+use fw\modules\AbstractProvider;
 
 /**
  * Class Provider
- * @package Fw\Modules\Router
+ * @package fw\Modules\Router
  */
 class Provider extends AbstractProvider
 {

@@ -4,18 +4,18 @@
  * @version: 1.0
  */
 
-namespace Fw\App;
+namespace fw\App;
 
-use \Fw\DI\DI;
+use \fw\DI\DI;
 
 /**
  * Class Controller
- * @package Fw\App
+ * @package fw\App
  */
 abstract class Controller
 {
 	/**
-	 * @var \Fw\DI\DI
+	 * @var \fw\DI\DI
 	 */
 	public $DI;
 
@@ -26,7 +26,7 @@ abstract class Controller
 	
 	/**
 	 * Controller constructor.
-	 * @param \Fw\DI\DI $DI
+	 * @param \fw\DI\DI $DI
 	 * @param array $route
 	 */
 	public function __construct(DI $DI, array $route)

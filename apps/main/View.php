@@ -6,13 +6,13 @@
 
 namespace apps\main;
 
-use Fw\Helper\Common;
+use fw\Helper\Common;
 
 /**
  * Class Controller
  * @package apps\main
  */
-class View extends \Fw\App\View
+class View extends \fw\App\View
 {
 	
 	public function render($object, $mode='html', $template=null)

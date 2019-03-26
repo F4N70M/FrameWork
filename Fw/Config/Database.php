@@ -10,7 +10,7 @@ return [
 		'HOST'		=> "localhost",
 		'USER'		=> "root",
 		'PASS'		=> "",
-		'BASE'		=> "Fw",
+		'BASE'		=> "fw",
 		'PREFIX'	=> null
 	],
 	[

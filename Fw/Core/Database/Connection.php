@@ -4,14 +4,14 @@
  * @version: 1.0
  */
 
-namespace Fw\Core\Database;
+namespace fw\Core\Database;
 
 use \PDO;
 use \PDOException;
 
 /**
  * Class Connection
- * @package Fw\Core\Database
+ * @package fw\Core\Database
  */
 class Connection
 {

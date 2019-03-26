@@ -6,15 +6,15 @@
 
 namespace apps\main;
 
-use Fw\DI\DI;
-use \Fw\Helper\Common as Helper;
+use fw\DI\DI;
+use \fw\Helper\Common as Helper;
 
 /**
  * Class Controller
- * @property \Fw\Core\Database\QueryBuilder db
+ * @property \fw\Core\Database\QueryBuilder db
  * @package apps\main
  */
-class Controller extends \Fw\App\Controller
+class Controller extends \fw\App\Controller
 {
 	//TODO: Настроить зоны видимости свойств класса
 	
@@ -22,7 +22,7 @@ class Controller extends \Fw\App\Controller
 	public $model;
 	public $view;
 	public $form;
-	// object \Fw\Core\Database\Db
+	// object \fw\Core\Database\Db
 	public $db;
 	//
 	public $object;

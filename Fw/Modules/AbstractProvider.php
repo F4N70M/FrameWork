@@ -4,14 +4,14 @@
  * @version: 1.0
  */
 
-namespace Fw\modules;
+namespace fw\modules;
 
 
 abstract class AbstractProvider
 {
 	protected $DI;
 
-	public function __construct(\Fw\DI\DI $DI)
+	public function __construct(\fw\DI\DI $DI)
 	{
 		$this->DI = $DI;
 	}

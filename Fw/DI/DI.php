@@ -4,7 +4,7 @@
  * Class DI
  */
 
-namespace Fw\DI;
+namespace fw\DI;
 
 class DI
 {

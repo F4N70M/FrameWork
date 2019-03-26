@@ -21,6 +21,6 @@ print_r('php pick memory: ' . round( memory_get_peak_usage() / 1024 * 100 ) / 10
 print_r('Время выполнения скрипта: '.round(microtime(true) - $start, 4).' сек.');
 
 //  Что делать то?
-use \Fw\Helper\Common;
+use \fw\Helper\Common;
 Common::print('Объекты зависят только от входных параметров (по цепочке) или от DI');
-Common::print('Последнее: Fw\Core\Database\QueryBuilder');
+Common::print('Последнее: fw\Core\Database\QueryBuilder');

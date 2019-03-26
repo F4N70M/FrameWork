@@ -10,7 +10,7 @@ namespace apps\admin;
  * Class Controller
  * @package apps\main
  */
-class View extends \Fw\App\View
+class View extends \fw\App\View
 {
 
 }

@@ -4,14 +4,14 @@
  * @version: 1.0
  */
 
-namespace Fw\Modules\Template;
+namespace fw\Modules\Template;
 
-use Fw\Core\Template\TemplateEngine;
-use Fw\Modules\AbstractProvider;
+use fw\Core\Template\TemplateEngine;
+use fw\Modules\AbstractProvider;
 
 /**
  * Class Provider
- * @package Fw\Modules\Template
+ * @package fw\Modules\Template
  */
 class Provider extends AbstractProvider
 {

@@ -10,7 +10,7 @@ namespace apps\main;
  * Class Controller
  * @package apps\main
  */
-class Form extends \Fw\App\Form
+class Form extends \fw\App\Form
 {
 
 }

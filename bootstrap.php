@@ -7,7 +7,7 @@ define('ROOT_DIR', str_replace('\\', '/', getcwd()) );
 //$__Config = require ROOT_DIR . '/__Config.php';
 
 //	Подключаем фреймворк
-require ROOT_DIR . '/Fw/bootstrap.php';
+require ROOT_DIR . '/fw/bootstrap.php';
 
 //	Инициализируем Фреймворк
 //FW::init($__Config);

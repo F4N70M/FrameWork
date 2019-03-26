@@ -4,15 +4,15 @@
  * @version: 1.0
  */
 
-namespace Fw\Modules\Database;
+namespace fw\Modules\Database;
 
-use Fw\Core\Database\Db;
-use Fw\Modules\AbstractProvider;
-use Fw\Core\Database\Connection;
+use fw\Core\Database\Db;
+use fw\Modules\AbstractProvider;
+use fw\Core\Database\Connection;
 
 /**
  * Class Provider
- * @package Fw\Modules\Database
+ * @package fw\Modules\Database
  */
 class Provider extends AbstractProvider
 {

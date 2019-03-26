@@ -6,13 +6,13 @@
 
 namespace apps\main;
 
-use Fw\Helper\Common;
+use fw\Helper\Common;
 
 /**
  * Class Controller
  * @package apps\main
  */
-class Model extends \Fw\App\Model
+class Model extends \fw\App\Model
 {
 	/**
 	 * @param $path

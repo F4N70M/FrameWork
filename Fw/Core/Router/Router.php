@@ -4,11 +4,11 @@
  * @version: 1.0
  */
 
-namespace Fw\Core\Router;
+namespace fw\Core\Router;
 
 /**
  * Class Router
- * @package Fw\Core\Router
+ * @package fw\Core\Router
  */
 class Router
 {

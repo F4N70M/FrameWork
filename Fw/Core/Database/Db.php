@@ -4,7 +4,7 @@
  * @version: 1.0
  */
 
-namespace Fw\Core\Database;
+namespace fw\Core\Database;
 
 use \PDO;
 

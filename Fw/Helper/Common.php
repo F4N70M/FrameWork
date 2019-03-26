@@ -4,7 +4,7 @@
  * @version: 1.0
  */
 
-namespace Fw\Helper;
+namespace fw\Helper;
 
 
 class Common

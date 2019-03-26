@@ -4,17 +4,17 @@
  * @version: 1.0
  */
 
-namespace Fw\App;
+namespace fw\App;
 
 /**
  * Class Model
- * @package Fw\App
+ * @package fw\App
  */
 abstract class Model
 {
 	protected $DI;
 	
-	public function __construct(\Fw\DI\DI $DI)
+	public function __construct(\fw\DI\DI $DI)
 	{
 		$this->DI = $DI;
 	}
