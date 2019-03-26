@@ -4,14 +4,14 @@
  * @version: 1.0
  */
 
-namespace Fw\Modules\AppRouter;
+namespace Fw\Modules\Router;
 
-use Fw\Core\Router\AppRouter;
+use Fw\Core\Router\Router;
 use Fw\modules\AbstractProvider;
 
 /**
  * Class Provider
- * @package Fw\Modules\AppRouter
+ * @package Fw\Modules\Router
  */
 class Provider extends AbstractProvider
 {
@@ -27,7 +27,7 @@ class Provider extends AbstractProvider
 	{
 		$routes = require FW_DIR . '/Config/AppRoutes.php';
 
-		$object = new AppRouter($routes);
+		$object = new Router($routes);
 
 		$this->DI->set($this->moduleName, $object);
 	}

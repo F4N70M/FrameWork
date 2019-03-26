@@ -7,18 +7,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
 
-    {% block headCSS %}{% endblock %}
-    {% block headJS %}{% endblock %}
+    {% block headCss %}{% endblock %}
+    {% block headJs %}{% endblock %}
 </head>
 <body>
     {% block header %}
-        {% include header.tpl %}
+        <header>
+            {% include header.tpl %}
+        </header>
     {% endblock %}
 
-    {% block content %}{% endblock %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 
     {% block footer %}
-        {% include header.tpl %}
+        <footer>
+            {% include header.tpl %}
+        </footer>
         {% block footerCSS %}{% endblock %}
         {% block footerJS %}{% endblock %}
     {% endblock %}

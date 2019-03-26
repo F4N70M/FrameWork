@@ -37,7 +37,7 @@ $DI = new \Fw\DI\DI();
 /**
  * Подключение модулей в DI
  */
-$modules = require FW_DIR . '/Config/Modules.php';
+$modules = require FW_DIR . "/Config/Modules.php";
 foreach ($modules as $module)
 {
 	$provider = new $module($DI);

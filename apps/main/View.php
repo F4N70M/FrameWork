@@ -18,5 +18,7 @@ class View extends \Fw\App\View
 	public function render($object, $mode='html', $template=null)
 	{
 		Common::print($object,$mode,$template);
+		
+		//TODO: написать метод рендера страницы
 	}
 }

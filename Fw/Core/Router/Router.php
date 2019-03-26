@@ -7,10 +7,10 @@
 namespace Fw\Core\Router;
 
 /**
- * Class AppRouter
- * @package Fw\Core\AppRouter
+ * Class Router
+ * @package Fw\Core\Router
  */
-class AppRouter
+class Router
 {
 	/**
 	 * @var array
@@ -22,7 +22,7 @@ class AppRouter
 	private $appInfo = null;
 
 	/**
-	 * AppRouter constructor.
+	 * Router constructor.
 	 * @param array $routes
 	 */
 	public function __construct(array $routes)

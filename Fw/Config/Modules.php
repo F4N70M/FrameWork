@@ -6,7 +6,7 @@
  */
 
 return [
-//	\Fw\Modules\Config\Provider::class,
 	\Fw\Modules\Database\Provider::class,
-	\Fw\Modules\AppRouter\Provider::class
+	\Fw\Modules\Router\Provider::class,
+	\Fw\Modules\Template\Provider::class
 ];
