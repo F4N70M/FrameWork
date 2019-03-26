@@ -4,21 +4,21 @@
  * @version: 1.0
  */
 
-namespace fw\Modules\Template;
+namespace fw\Services\Template;
 
 use fw\Core\Template\TemplateEngine;
-use fw\Modules\AbstractProvider;
+use fw\Services\AbstractProvider;
 
 /**
  * Class Provider
- * @package fw\Modules\Template
+ * @package fw\Services\Template
  */
 class Provider extends AbstractProvider
 {
 	/**
 	 * @var string
 	 */
-	public $moduleName = 'template';
+	public $serviceName = 'template';
 
 	/**
 	 * Initialization
@@ -27,6 +27,6 @@ class Provider extends AbstractProvider
 	{
 		$object = new TemplateEngine();
 		
-		$this->DI->set($this->moduleName, $object);
+		$this->DI->set($this->serviceName, $object);
 	}
 }

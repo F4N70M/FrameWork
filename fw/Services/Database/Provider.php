@@ -4,22 +4,22 @@
  * @version: 1.0
  */
 
-namespace fw\Modules\Database;
+namespace fw\Services\Database;
 
 use fw\Core\Database\Db;
-use fw\Modules\AbstractProvider;
+use fw\Services\AbstractProvider;
 use fw\Core\Database\Connection;
 
 /**
  * Class Provider
- * @package fw\Modules\Database
+ * @package fw\Services\Database
  */
 class Provider extends AbstractProvider
 {
 	/**
 	 * @var string
 	 */
-	public $moduleName = 'db';
+	public $serviceName = 'db';
 
 	/**
 	 * Initialization
@@ -39,6 +39,6 @@ class Provider extends AbstractProvider
 
 		$object = new Db($connection->getLink());
 
-		$this->DI->set($this->moduleName, $object);
+		$this->DI->set($this->serviceName, $object);
 	}
 }

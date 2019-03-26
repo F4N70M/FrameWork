@@ -4,7 +4,7 @@
  * @version: 1.0
  */
 
-namespace fw\modules;
+namespace fw\Services;
 
 
 abstract class AbstractProvider

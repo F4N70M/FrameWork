@@ -4,21 +4,21 @@
  * @version: 1.0
  */
 
-namespace fw\Modules\Router;
+namespace fw\Services\Router;
 
 use fw\Core\Router\Router;
-use fw\modules\AbstractProvider;
+use fw\Services\AbstractProvider;
 
 /**
  * Class Provider
- * @package fw\Modules\Router
+ * @package fw\Services\Router
  */
 class Provider extends AbstractProvider
 {
 	/**
 	 * @var string
 	 */
-	private $moduleName = 'router';
+	private $serviceName = 'router';
 
 	/**
 	 * Initialization
@@ -29,6 +29,6 @@ class Provider extends AbstractProvider
 
 		$object = new Router($routes);
 
-		$this->DI->set($this->moduleName, $object);
+		$this->DI->set($this->serviceName, $object);
 	}
 }

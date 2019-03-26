@@ -32,15 +32,15 @@ spl_autoload_register('fw_autoload');
 /**
  * Объект Dependency Injection
  */
-$DI = new \fw\DI\DI();
+$DI = new \Fw\DI\DI();
 
 /**
  * Подключение модулей в DI
  */
-$modules = require FW_DIR . "/Config/Modules.php";
-foreach ($modules as $module)
+$services = require FW_DIR . "/Config/Services.php";
+foreach ($services as $service)
 {
-	$provider = new $module($DI);
+	$provider = new $service($DI);
 	$provider->init();
 }
 
