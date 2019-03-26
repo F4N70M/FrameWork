@@ -34,10 +34,4 @@ abstract class Controller
 		$this->DI = $DI;
 		$this->route = $route;
 	}
-
-
-//	public function __get($name)
-//	{
-//		return $this->DI->get($name);
-//	}
 }
