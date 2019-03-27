@@ -28,9 +28,9 @@
 	{
 		$route = array_merge($route,$appInfo);
 		$controller = new $appInfo['controller']($DI,$route);
-		call_user_func_array([$controller, $appInfo['method']], [$appInfo['arguments']]);
 	}
 	else
 	{
+		
 		new \apps\main\controllers\Default_Controller($DI,$route);
 	}

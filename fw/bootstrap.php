@@ -55,24 +55,25 @@ $router = $DI->get('router');
 $route = $router->getAppInfo();
 	
 
-if (isset($route['file']) && file_exists($route['file']))
-{
-	require $route['file'];
-}
-else
-{
-	//TODO: написать сценарий если необходимое приложение не нашлось
-}
+//if (isset($route['file']) && file_exists($route['file']))
+//{
+//	require $route['file'];
+//}
+//else
+//{
+//	//TODO: написать сценарий если необходимое приложение не нашлось
+//}
 
 
-//try
-//{
-//	/**
-//	 * Создание объекта приложения
-//	 */
-//	$app = new $route['class']($DI,$route);
-//}
-//catch (Exception $e)
-//{
-//	echo $e->getMessage();
-//}
+try
+{
+	/**
+	 * Создание объекта приложения
+	 */
+	$app = new $route['class']($DI,$route);
+}
+catch (Exception $e)
+{
+	//TODO: написать исключение
+	echo $e->getMessage();
+}

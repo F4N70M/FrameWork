@@ -40,8 +40,9 @@ class Router
 		$result = [];
 
 		$uri = trim( parse_url($_SERVER['REQUEST_URI'])['path'], '/' );
-
-		foreach ($this->routes as $prefix => $file)
+		
+		//foreach ($this->routes as $prefix => $file)
+		foreach ($this->routes as $prefix => $class)
 		{
 			$pattern = '#^' . $prefix . '(' . (empty($prefix) ? '' : '/') . '(.*))?$#i';
 
@@ -52,7 +53,8 @@ class Router
 				$path = trim( $matches[2], '/' );
 
 				$result = [
-					'file'		=>	$file,
+					//'file'		=>	$file,
+					'class'		=>	$class,
 					'pattern'	=>	$pattern,
 					'uri'       =>  [
 						'full'		=>	$uri,

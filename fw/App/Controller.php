@@ -7,6 +7,7 @@
 namespace fw\App;
 
 use \fw\DI\DI;
+use fw\Helper\Common;
 
 /**
  * Class Controller
@@ -33,5 +34,10 @@ abstract class Controller
 	{
 		$this->DI = $DI;
 		$this->route = $route;
+	}
+	
+	public function error($error)
+	{
+		Common::print("Error: $error");
 	}
 }

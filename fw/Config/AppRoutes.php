@@ -7,6 +7,8 @@
 //TODO: Исправить роуты приложений
 return [
 	//'setup'		=>	\apps\setup\Controller::class,
-	'admin'		=>	ROOT_DIR . '/apps/admin/app.php',
-	null        =>	ROOT_DIR . '/apps/main/app.php'
+	'admin'		=>	\apps\admin\App::class,
+	null        =>	\apps\main\App::class
+	//'admin'		=>	ROOT_DIR . '/apps/admin/__app.php',
+	//null        =>	ROOT_DIR . '/apps/main/__app.php'
 ];
