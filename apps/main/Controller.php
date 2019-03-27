@@ -22,13 +22,16 @@ class Controller extends \fw\App\Controller
 	public $model;
 	public $view;
 	public $form;
+	
 	// object \fw\Core\Database\Db
 	public $db;
+	
 	//
 	public $object;
 	public $method;
 	public $mode;
 	public $template;
+	
 	//
 	public $data;
 	

@@ -37,11 +37,11 @@ class Router
 	 */
 	private function parseUri()
 	{
-		$result = null;
+		$result = [];
 
 		$uri = trim( parse_url($_SERVER['REQUEST_URI'])['path'], '/' );
 
-		foreach ($this->routes as $prefix => $className)
+		foreach ($this->routes as $prefix => $file)
 		{
 			$pattern = '#^' . $prefix . '(' . (empty($prefix) ? '' : '/') . '(.*))?$#i';
 
@@ -52,7 +52,7 @@ class Router
 				$path = trim( $matches[2], '/' );
 
 				$result = [
-					'class'		=>	$className,
+					'file'		=>	$file,
 					'pattern'	=>	$pattern,
 					'uri'       =>  [
 						'full'		=>	$uri,

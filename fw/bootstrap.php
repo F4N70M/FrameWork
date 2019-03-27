@@ -53,15 +53,26 @@ $router = $DI->get('router');
  * Получение информации о приложении для запуска
  */
 $route = $router->getAppInfo();
+	
 
-try
+if (isset($route['file']) && file_exists($route['file']))
 {
-	/**
-	 * Создание объекта приложения
-	 */
-	$app = new $route['class']($DI,$route);
+	require $route['file'];
 }
-catch (Exception $e)
+else
 {
-	echo $e->getMessage();
+	//TODO: написать сценарий если необходимое приложение не нашлось
 }
+
+
+//try
+//{
+//	/**
+//	 * Создание объекта приложения
+//	 */
+//	$app = new $route['class']($DI,$route);
+//}
+//catch (Exception $e)
+//{
+//	echo $e->getMessage();
+//}
