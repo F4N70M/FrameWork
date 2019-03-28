@@ -32,7 +32,7 @@ spl_autoload_register('fw_autoload');
 /**
  * Объект Dependency Injection
  */
-$DI = new \Fw\DI\DI();
+$DI = new \fw\DI\DI();
 
 /**
  * Подключение модулей в DI
