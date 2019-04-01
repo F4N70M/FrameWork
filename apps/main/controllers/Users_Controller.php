@@ -18,7 +18,7 @@
 			parent::__construct($DI, $route);
 			
 			Common::print(
-				'HELLO WORLD!!! Im Users_Controller!!!',
+				'Users_Controller!!!',
 				$route
 			);
 		}
@@ -26,7 +26,28 @@
 		public function signup()
 		{
 			Common::print(
-				'HELLO WORLD!!! Im SignUp!!!'
+				'SignUp!!!'
+			);
+		}
+		
+		public function signin()
+		{
+			Common::print(
+				'SignIn!!!'
+			);
+		}
+		
+		public function signout()
+		{
+			Common::print(
+				'SignOut!!!'
+			);
+		}
+		
+		public function recovery()
+		{
+			Common::print(
+				'Recovery!!!'
 			);
 		}
 	}

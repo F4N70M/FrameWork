@@ -19,24 +19,16 @@ function fw_autoload($class)
 	throw new Exception('Ошибка автоподключения класса "' . $class . '": файл не найден (' . $file . ')<br>');
 }
 
-/**
- * Константа FW_DIR
- */
+// Константа FW_DIR
 define( 'FW_DIR', str_replace('\\', '/', __DIR__) );
 
-/**
- * Запускаем автозагрузчики классов
- */
+// Запускаем автозагрузчики классов
 spl_autoload_register('fw_autoload');
 
-/**
- * Объект Dependency Injection
- */
+// Объект Dependency Injection
 $DI = new \fw\DI\DI();
 
-/**
- * Подключение модулей в DI
- */
+// Подключение модулей в DI
 $services = require FW_DIR . "/Config/Services.php";
 foreach ($services as $service)
 {
@@ -44,16 +36,24 @@ foreach ($services as $service)
 	$provider->init();
 }
 
-/**
- * Поиск приложения
- */
+// Роутер
 $router = $DI->get('router');
 
-/**
- * Получение информации о приложении для запуска
- */
+// Получение информации о приложении для запуска
 $route = $router->getAppInfo();
-	
+
+
+try
+{
+	// Создание объекта приложения
+	$app = new $route['class']($DI,$route);
+}
+catch (Exception $e)
+{
+	//TODO: написать исключение
+	echo $e->getMessage();
+}
+
 
 //if (isset($route['file']) && file_exists($route['file']))
 //{
@@ -63,17 +63,3 @@ $route = $router->getAppInfo();
 //{
 //	//TODO: написать сценарий если необходимое приложение не нашлось
 //}
-
-
-try
-{
-	/**
-	 * Создание объекта приложения
-	 */
-	$app = new $route['class']($DI,$route);
-}
-catch (Exception $e)
-{
-	//TODO: написать исключение
-	echo $e->getMessage();
-}

@@ -5,18 +5,18 @@
 	 */
 	
 	return [
-		'users/([A-z]+)'    => [
-			'controller'    => apps\main\controllers\Users_Controller::class,
+		'(signup|signin|signout|recovery)'    => [
+			'controller'    => 'Users_Controller',
 			'method'        => '$1',
 			'arguments'     => null
 		],
-		'mail/([A-z]+)'    => [
-			'controller'    => 'controllers\Mail_Controller',
+		'mail/(callback)'    => [
+			'controller'    => 'Mail_Controller',
 			'method'        => '$1',
 			'arguments'     => null
 		],
 		'news/([A-z]+)'    => [
-			'controller'    => 'controllers\News_Controller',
+			'controller'    => 'News_Controller',
 			'method'        => '$1',
 			'arguments'     => null
 		]

@@ -6,7 +6,8 @@
 	
 	namespace apps\main;
 	
-	use apps\main\controllers\Default_Controller;
+	use apps\main\controllers\Main_Controller;
+	use fw\Helper\Common;
 	
 	class App
 	{
@@ -15,13 +16,18 @@
 		 * @param $DI
 		 * @param array $route
 		 */
-		public function __construct($DI, array $route)
+		public function __construct(\fw\DI\DI $DI, array $route)
 		{
+			
+			$where = ['date'=>['in',['2019-03-04','2019-03-11']]];
+			$tmp = $DI->get('db')->select()->from('objects')->where($where)->all();
+			Common::print($tmp);
+			
 			$pathRoutes = $this->getPathRoutes();
 			
-			$appInfo    = $this->getInfoByRoutes($pathRoutes,$route);
+			$appInfo    = $this->getInfoByRoutes($pathRoutes, $route);
 			
-			$controller = new $appInfo['controller']($DI,$route);
+			$controller = new $appInfo['controller']($DI, $route);
 			
 			if (isset($appInfo['method']))
 			{
@@ -50,22 +56,26 @@
 		 */
 		private function getInfoByRoutes(array $pathRoutes, array $route)
 		{
-			$appInfo['controller'] = Default_Controller::class;
+			$appInfo['controller'] = Main_Controller::class;
 			
 			foreach ($pathRoutes as $pattern => $pathRoute) {
 				$pattern = "#^$pattern\$#iu";
 				if (preg_match($pattern, $route['uri']['path'], $matches))
 				{
-					$controller = $pathRoute['controller'];
-					$method = preg_replace($pattern, $pathRoute['method'], $route['uri']['path']);
+					$nameController = __NAMESPACE__ . '\\controllers\\' . $pathRoute['controller'];
 					
-					if (method_exists($controller, $method))
+					if (class_exists($nameController))
 					{
-						unset($matches[0]);
-						$appInfo['controller'] = $controller;
-						$appInfo['method']     = $method;
-						$appInfo['arguments']  = explode(',', preg_replace($pattern, $pathRoute['arguments'], $route['uri']['path']));
-						break;
+						$method = preg_replace($pattern, $pathRoute['method'], $route['uri']['path']);
+						
+						if (method_exists($nameController, $method))
+						{
+							unset($matches[0]);
+							$appInfo['controller'] = $nameController;
+							$appInfo['method']     = $method;
+							$appInfo['arguments']  = explode(',', preg_replace($pattern, $pathRoute['arguments'], $route['uri']['path']));
+							break;
+						}
 					}
 				}
 			}
