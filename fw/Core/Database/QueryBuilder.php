@@ -405,6 +405,7 @@ class QueryBuilder
 		
 		if ( $result )
 		{
+			Common::print('rowCount: '.$this->statement->rowCount());
 			$result = $this->statement->fetchAll(PDO::FETCH_ASSOC);
 		}
 		

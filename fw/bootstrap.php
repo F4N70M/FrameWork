@@ -28,16 +28,24 @@ spl_autoload_register('fw_autoload');
 // Объект Dependency Injection
 $DI = new \fw\DI\DI();
 
+// Подключение сервисов в DI
+	$services = require FW_DIR . "/Config/Services.php";
+	foreach ($services as $service)
+	{
+		$provider = new $service($DI);
+		$provider->init();
+	}
+
 // Подключение модулей в DI
-$services = require FW_DIR . "/Config/Services.php";
-foreach ($services as $service)
-{
-	$provider = new $service($DI);
-	$provider->init();
-}
+	$modules = require FW_DIR . "/Config/Modules.php";
+	foreach ($modules as $module)
+	{
+		$provider = new $module($DI);
+		$provider->init();
+	}
 
 // Роутер
-$router = $DI->get('router');
+$router = $DI->getServices('router');
 
 // Получение информации о приложении для запуска
 $route = $router->getAppInfo();

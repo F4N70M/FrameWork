@@ -18,7 +18,7 @@ class Provider extends AbstractProvider
 	/**
 	 * @var string
 	 */
-	public $serviceName = 'template';
+	protected $serviceName = 'template';
 
 	/**
 	 * Initialization
@@ -27,6 +27,6 @@ class Provider extends AbstractProvider
 	{
 		$object = new TemplateEngine();
 		
-		$this->DI->set($this->serviceName, $object);
+		$this->DI->setService($this->serviceName, $object);
 	}
 }

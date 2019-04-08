@@ -19,7 +19,7 @@ class Provider extends AbstractProvider
 	/**
 	 * @var string
 	 */
-	public $serviceName = 'db';
+	protected $serviceName = 'db';
 
 	/**
 	 * Initialization
@@ -39,6 +39,6 @@ class Provider extends AbstractProvider
 
 		$object = new Db($connection->getLink());
 
-		$this->DI->set($this->serviceName, $object);
+		$this->DI->setService($this->serviceName, $object);
 	}
 }

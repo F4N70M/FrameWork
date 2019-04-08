@@ -18,7 +18,7 @@ class Provider extends AbstractProvider
 	/**
 	 * @var string
 	 */
-	private $serviceName = 'router';
+	protected $serviceName = 'router';
 
 	/**
 	 * Initialization
@@ -29,6 +29,6 @@ class Provider extends AbstractProvider
 
 		$object = new Router($routes);
 
-		$this->DI->set($this->serviceName, $object);
+		$this->DI->setService($this->serviceName, $object);
 	}
 }

@@ -11,37 +11,62 @@ class DI
 	/**
 	 * @var array
 	 */
-	private $container = [];
-
+	private $container = [
+		'modules'  => null,
+		'services' => null
+	];
+	
 	/**
-	 * @param string $key
+	 * @param string $serviceName
 	 * @param $object
-	 * @return $this
 	 */
-	public function set(string $key, $object)
+	public function setService(string $serviceName, $object)
 	{
-		$this->container[$key] = $object;
-
-		return $this;
+		$this->container['services'][$serviceName] = $object;
 	}
-
+	
 	/**
-	 * @param $key
-	 * @return mixed
+	 * @param string $serviceName
+	 * @return object|null
 	 */
-	public function get($key)
+	public function getServices(string $serviceName)
 	{
-		if ($this->has($key)) return $this->container[$key];
-
-		return null;
+		return (($this->has($serviceName)) ? $this->container['services'][$serviceName] : null);
 	}
-
+	
 	/**
-	 * @param $key
+	 * @param $serviceName
 	 * @return bool
 	 */
-	public function has($key)
+	public function has($serviceName)
 	{
-		return isset($this->container[$key]);
+		return isset($this->container['services'][$serviceName]);
+	}
+	
+	/**
+	 * @param string $moduleName
+	 * @param $object
+	 */
+	public function setModule(string $moduleName, $object)
+	{
+		$this->container['modules'][$moduleName] = $object;
+	}
+	
+	/**
+	 * @param string $moduleName
+	 * @return object|null
+	 */
+	public function getModule(string $moduleName)
+	{
+		return (($this->hasModule($moduleName)) ? $this->container['modules'][$moduleName] : null);
+	}
+	
+	/**
+	 * @param $moduleName
+	 * @return bool
+	 */
+	public function hasModule($moduleName)
+	{
+		return isset($this->container['modules'][$moduleName]);
 	}
 }

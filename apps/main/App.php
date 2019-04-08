@@ -18,9 +18,14 @@
 		 */
 		public function __construct(\fw\DI\DI $DI, array $route)
 		{
-			
+			Common::print($DI);
 			$where = ['date'=>['in',['2019-03-04','2019-03-11']]];
-			$tmp = $DI->get('db')->select()->from('objects')->where($where)->all();
+			$tmp = $DI
+				->getServices('db')
+				->select()
+				->from('objects')
+				->where($where)
+				->all();
 			Common::print($tmp);
 			
 			$pathRoutes = $this->getPathRoutes();
