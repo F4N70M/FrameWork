@@ -14,6 +14,6 @@
 		
 		public function __construct(DI $DI)
 		{
-		
+			$this->DI = $DI;
 		}
 	}

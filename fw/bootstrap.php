@@ -38,11 +38,7 @@ $DI = new \fw\DI\DI();
 
 // Подключение модулей в DI
 	$modules = require FW_DIR . "/Config/Modules.php";
-	foreach ($modules as $module)
-	{
-		$provider = new $module($DI);
-		$provider->init();
-	}
+	new \fw\Modules\Provider($DI, $modules);
 
 // Роутер
 $router = $DI->getServices('router');

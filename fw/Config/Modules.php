@@ -6,7 +6,7 @@
 	 */
 	
 	return [
-		\fw\Modules\Main\Provider::class,
-		\fw\Modules\Blog\Provider::class,
-		\fw\Modules\Shop\Provider::class
+		'main'  => \fw\Modules\Main\Module::class,
+		'blog'  => \fw\Modules\Blog\Module::class,
+		'shop'  => \fw\Modules\Shop\Module::class
 	];
