@@ -11,6 +11,11 @@
 	{
 		protected $DI;
 		
+		/**
+		 * Provider constructor.
+		 * @param \fw\DI\DI $DI
+		 * @param array $modules
+		 */
 		public function __construct(\fw\DI\DI $DI, array $modules)
 		{
 			$this->DI = $DI;
@@ -21,6 +26,10 @@
 			}
 		}
 		
+		/**
+		 * @param string $moduleName
+		 * @param $moduleClass
+		 */
 		public function init(string $moduleName, $moduleClass)
 		{
 			$object = new $moduleClass($this->DI);

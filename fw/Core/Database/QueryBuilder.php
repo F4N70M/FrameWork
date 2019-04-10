@@ -181,8 +181,8 @@ class QueryBuilder
 	 * @example ['id'=>['<', 4], ['or', 'id'=>['>', 6]]]
 	 * @result  WHERE id < 4 || id > 6
 	 *
-	 * @example ['id'=>['like', '%test%']]
-	 * @result  WHERE id LIKE '%test%'
+	 * @example ['id'=>['like', '%fw%']]
+	 * @result  WHERE id LIKE '%fw%'
 	 *
 	 * @example ['date'=>['between', ['2019-03-03', '2019-03-05']]]
 	 * @result  WHERE date BETWEEN '2019-03-03' AND '2019-03-05'

@@ -4,11 +4,23 @@
 	 * @version: 1.0
 	 */
 	
-	namespace fw\Modules\Main\Classes;
+	namespace fw\Modules\Main\Services;
 	
+	use fw\DI\DI;
 	
-	class Page
+	class Users
 	{
+		public $DI;
+		
+		public function __construct(DI $DI)
+		{
+			$this->DI = $DI;
+		}
+		
+		public function get(array $id)
+		{
+		
+		}
 		public function add(array $values)
 		{
 		

@@ -11,14 +11,22 @@
 	
 	class Module extends AbstractModule
 	{
-		public $page;
-		public $post;
-		public $user;
+		public $pages;
+		public $posts;
+		public $users;
+		public $account;
 		
+		/**
+		 * Module constructor.
+		 * @param DI $DI
+		 */
 		public function __construct(DI $DI)
 		{
 			parent::__construct($DI);
 			
-			$this->page = new Classes\Page();
+			$this->pages = new Services\Pages($DI);
+			$this->posts = new Services\Posts($DI);
+			$this->users = new Services\Users($DI);
+			$this->account = new Services\Account($DI);
 		}
 	}
