@@ -5,7 +5,7 @@
 	 */
 	
 	return [
-		'(signup|signin|signout|recovery)'    => [
+		'(signup|login|logout|recovery)'    => [
 			'controller'    => 'Users_Controller',
 			'method'        => '$1',
 			'arguments'     => null

@@ -19,17 +19,17 @@
 			$this->DI = $DI;
 		}
 		
-		public function signUp()
+		public function create()
 		{
 		
 		}
 		
-		public function logIn()
+		public function authorize(int $id)
 		{
 		
 		}
 		
-		public function logOut()
+		public function exit(int $id)
 		{
 		
 		}
@@ -37,7 +37,9 @@
 		public function get()
 		{
 			if (!empty($this->current) && $this->has($this->current))
+			{
 				return $this->list[$this->current];
+			}
 			
 			return null;
 		}

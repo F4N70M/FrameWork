@@ -24,9 +24,9 @@
 		{
 			parent::__construct($DI);
 			
-			$this->pages = new Services\Pages($DI);
-			$this->posts = new Services\Posts($DI);
-			$this->users = new Services\Users($DI);
+			$this->pages   = new Services\Pages($DI);
+			$this->posts   = new Services\Posts($DI);
+			$this->users   = new Services\Users($DI);
 			$this->account = new Services\Account($DI);
 		}
 	}

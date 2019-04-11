@@ -18,16 +18,6 @@
 		 */
 		public function __construct(\fw\DI\DI $DI, array $route)
 		{
-			Common::print($DI);
-			$where = ['date'=>['in',['2019-03-04','2019-03-11']]];
-			$tmp = $DI
-				->getServices('db')
-				->select()
-				->from('objects')
-				->where($where)
-				->all();
-			Common::print($tmp);
-			
 			$pathRoutes = $this->getPathRoutes();
 			
 			$appInfo    = $this->getInfoByRoutes($pathRoutes, $route);
@@ -61,29 +51,41 @@
 		 */
 		private function getInfoByRoutes(array $pathRoutes, array $route)
 		{
-			$appInfo['controller'] = Main_Controller::class;
+			$uriPath = $route['uri']['path'];
 			
-			foreach ($pathRoutes as $pattern => $pathRoute) {
+			foreach ($pathRoutes as $pattern => $pathRoute)
+			{
 				$pattern = "#^$pattern\$#iu";
-				if (preg_match($pattern, $route['uri']['path'], $matches))
+				
+				if ($matches = $this->getMatches($pattern, $uriPath))
 				{
-					$nameController = __NAMESPACE__ . '\\controllers\\' . $pathRoute['controller'];
-					
-					if (class_exists($nameController))
+					if ($controllerClass = $this->getControllerClass($pathRoute['controller']))
 					{
-						$method = preg_replace($pattern, $pathRoute['method'], $route['uri']['path']);
+						$methodName = preg_replace($pattern, $pathRoute['method'], $uriPath);
 						
-						if (method_exists($nameController, $method))
+						if (method_exists($controllerClass, $methodName))
 						{
-							unset($matches[0]);
-							$appInfo['controller'] = $nameController;
-							$appInfo['method']     = $method;
-							$appInfo['arguments']  = explode(',', preg_replace($pattern, $pathRoute['arguments'], $route['uri']['path']));
-							break;
+							$result['controller'] = $controllerClass;
+							$result['method']     = $methodName;
+							$result['arguments']  = explode(',', preg_replace($pattern, $pathRoute['arguments'], $uriPath));
+							return $result;
 						}
 					}
 				}
 			}
-			return $appInfo;
+			//  default result
+			return ['controller' => Main_Controller::class];
+		}
+		
+		private function getMatches(string $pattern, string $path)
+		{
+			return preg_match($pattern, $path, $matches) ? $matches : false;
+		}
+		
+		private function getControllerClass(string $name)
+		{
+			$className = __NAMESPACE__ . '\\controllers\\' . $name;
+			
+			return class_exists($className) ? $className : false;
 		}
 	}
