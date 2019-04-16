@@ -21,17 +21,35 @@
 		{
 			parent::__construct($DI, $route);
 			
+			/* COOKIE */
+			$cookie = $DI->getModule('main')->cookie;
+			//$cookie->del('test');
+			//$value = (int) $cookie->get('test') + 1;
+			//$cookie->set('test', $value);
+			//setcookie('test', (int) $_COOKIE['test']+1, 0);
+			Common::print($cookie->get('test'));
+			Common::print($cookie->get());
+			/* /COOKIE */
+			
+			
 			Common::print(
 				'Main_Controller!!!',
 				$route
-//				,
-//				$DI->getModule('main')->account->list()
 			);
 			
 			$this->model = new Main_Model($DI);
 			$this->view  = new Main_View($DI);
 			
-			$action = $this->model->route($route['uri']['path']);
-			Common::print($action);
+			$path = $route['uri']['path'];
+			if (empty($path))
+			{
+				$unique = $this->model->getIndexId();
+			}
+			else
+			{
+				$unique = array_pop(explode('/', $path));
+			}
+			$data    = $this->model->getObject($unique);
+			Common::print('$data =', $data);
 		}
 	}

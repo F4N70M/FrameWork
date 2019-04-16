@@ -37,14 +37,11 @@ $DI = new \fw\DI\DI();
 	}
 
 // Подключение модулей в DI
-	$modules = require FW_DIR . "/Config/Modules.php";
-	new \fw\Modules\Provider($DI, $modules);
-
-// Роутер
-$router = $DI->getServices('router');
+$modules = require FW_DIR . "/Config/Modules.php";
+new \fw\Modules\Provider($DI, $modules);
 
 // Получение информации о приложении для запуска
-$route = $router->getAppInfo();
+$route = $DI->getServices('router')->getAppInfo();
 
 
 try

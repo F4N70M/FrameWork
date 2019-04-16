@@ -7,7 +7,7 @@
 	
 	return [
 		'main'  => \fw\Modules\Main\Module::class,
-		'forms' => \fw\Modules\Forms\Module::class,
+		'form' => \fw\Modules\Forms\Module::class,
 		'blog'  => \fw\Modules\Blog\Module::class,
 		'shop'  => \fw\Modules\Shop\Module::class
 	];

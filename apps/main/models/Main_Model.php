@@ -16,20 +16,16 @@
 		{
 			parent::__construct($DI);
 			
-			Common::print('Main_Model');
+			//Common::print('Main_Model');
 		}
 		
-		public function route($path)
+		public function getIndexId()
 		{
-			if (empty($path))
-			{
-				return 'index';
-			}
-			else
-			{
-				return $path;
-				//  routes:
-				//      pattern => [module, service, action]
-			}
+			return $this->DI->getModule('main')->options->getValue('index');
+		}
+		
+		public function getObject($unique)
+		{
+			return $this->DI->getModule('main')->objects->get($unique);
 		}
 	}

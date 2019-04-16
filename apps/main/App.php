@@ -41,9 +41,6 @@
 			return require __DIR__ . "/routes.php";
 		}
 		
-		
-		
-		
 		/**
 		 * @param array $pathRoutes
 		 * @param array $route
@@ -77,11 +74,20 @@
 			return ['controller' => Main_Controller::class];
 		}
 		
+		/**
+		 * @param string $pattern
+		 * @param string $path
+		 * @return array|bool
+		 */
 		private function getMatches(string $pattern, string $path)
 		{
 			return preg_match($pattern, $path, $matches) ? $matches : false;
 		}
 		
+		/**
+		 * @param string $name
+		 * @return string|false
+		 */
 		private function getControllerClass(string $name)
 		{
 			$className = __NAMESPACE__ . '\\controllers\\' . $name;

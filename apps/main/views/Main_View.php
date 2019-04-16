@@ -17,6 +17,6 @@
 		{
 			parent::__construct($DI);
 			
-			Common::print('Main_View');
+			//Common::print('Main_View');
 		}
 	}

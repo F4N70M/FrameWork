@@ -15,6 +15,7 @@ use \PDOStatement;
 class QueryBuilder
 {
 	private $link;
+	private $table;
 	private $sql;
 	private $bind = [];
 	private $statement;
@@ -69,6 +70,7 @@ class QueryBuilder
 	 */
 	public function from(string $table)
 	{
+		$this->table = $table;
 		$this->sql .= " FROM $table";
 		
 		return $this;
@@ -80,6 +82,7 @@ class QueryBuilder
 	 */
 	public function into(string $table)
 	{
+		$this->table = $table;
 		$this->sql .= " INTO $table";
 		
 		return $this;
@@ -91,6 +94,7 @@ class QueryBuilder
 	 */
 	public function table(string $table)
 	{
+		$this->table = $table;
 		$this->sql .= " $table";
 		
 		return $this;
@@ -162,8 +166,10 @@ class QueryBuilder
 			$this->sql .= " WHERE $whereString";
 		}
 		
-		Common::print($this->sql);
-		Common::print($this->bind);
+//		Common::print(
+//			$this->sql,
+//			$this->bind
+//		);
 		
 		return $this;
 	}
@@ -396,17 +402,27 @@ class QueryBuilder
 	}
 	
 	/**
-	 * @return array
+	 * @param string|null $key
+	 * @return array|bool|string
 	 * @throws Exception
 	 */
-	public function all()
+	public function all(string $key=null)
 	{
 		$result = $this->do();
 		
 		if ( $result )
 		{
-			Common::print('rowCount: '.$this->statement->rowCount());
+			//Common::print('rowCount: '.$this->statement->rowCount());
 			$result = $this->statement->fetchAll(PDO::FETCH_ASSOC);
+		}
+		if(!empty($key) && isset($result[0][$key]))
+		{
+			$tmp = [];
+			foreach ($result as $item)
+			{
+				$tmp[$item[$key]] = $item;
+			}
+			$result = $tmp;
 		}
 		
 		return $result;
