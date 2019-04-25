@@ -24,10 +24,10 @@
 		 */
 		public function __construct(DI $DI, array $route)
 		{
-			Common::print(
-				'Main_Controller!!!',
-				$route
-			);
+//			Common::print(
+//				'Main_Controller!!!',
+//				$route
+//			);
 			
 			// Родительский конструктор
 			parent::__construct($DI, $route);
@@ -39,7 +39,16 @@
 			
 			
 			$path = $route['uri']['path'];
-			$info = $this->model->getInfoPageFromPath($path);
-			Common::print('info :', $info);
+			$pageInfo = $this->model->getInfoPageFromPath($path);
+			
+			$access = $this->model->checkAccess($pageInfo);
+			Common::print('info :', $pageInfo);
+			
+			
+			$allObjects = $this->DI->getServices('db')
+				->select('name')
+				->from('objects')
+				->all();
+			Common::print('All items from table objects:', $allObjects);
 		}
 	}

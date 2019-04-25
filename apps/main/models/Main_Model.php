@@ -43,7 +43,6 @@
 			
 			if ($object = $this->getObjectData($unique))
 			{
-				Common::print($object);
 				if (empty($split['parents']) || (!empty($split['parents']) && $this->checkParentSequence($object, $parents=$split['parents'])))
 				{
 					
@@ -95,5 +94,19 @@
 		public function getObjectData($unique)
 		{
 			return $this->DI->getModule('main')->objects->get($unique);
+		}
+		
+		public function checkAccess($pageInfo)
+		{
+			if (isset($pageInfo['access']))
+			{
+				//TODO: Написать проверку доступа
+				//$this->DI->getModule('main')->Account->
+				return true;
+			}
+			else
+			{
+				return true;
+			}
 		}
 	}

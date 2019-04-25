@@ -7,7 +7,6 @@
 	namespace fw\Modules\Main\Services;
 	
 	use fw\DI\DI;
-	use fw\Helper\Common;
 	
 	class Objects
 	{
