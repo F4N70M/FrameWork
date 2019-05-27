@@ -30,3 +30,11 @@ Common::print(
 	'var			Голуб	44		2',
 	'var			Голуб	46		6'
 );
+Common::print(
+	'type	name	title	color	size	price	count',
+	'page	dress	Палтье			2000	',
+	'good			Розов	44		3',
+	'var			Розов	46		5',
+	'var			Голуб	44		2',
+	'var			Голуб	46		6'
+);

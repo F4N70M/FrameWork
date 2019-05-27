@@ -19,4 +19,9 @@
 			
 			//Common::print('Main_View');
 		}
+		
+		public function render($unique, $data, $error)
+		{
+		
+		}
 	}

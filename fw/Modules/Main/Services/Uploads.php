@@ -9,7 +9,7 @@
 	
 	use fw\DI\DI;
 	
-	class Files
+	class Uploads
 	{
 		public $DI;
 		

@@ -6,6 +6,8 @@
 
 namespace fw\Core\Router;
 
+use fw\Helper\Common;
+
 /**
  * Class Router
  * @package fw\Core\Router
@@ -39,7 +41,14 @@ class Router
 	{
 		$result = [];
 
-		$uri = trim( parse_url($_SERVER['REQUEST_URI'])['path'], '/' );
+		$uri = urldecode(
+			trim(
+				parse_url(
+					$_SERVER['REQUEST_URI']
+				)['path'],
+				'/'
+			)
+		);
 		
 		//foreach ($this->routes as $prefix => $file)
 		foreach ($this->routes as $prefix => $class)

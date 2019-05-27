@@ -43,7 +43,6 @@ new \fw\Modules\Provider($DI, $modules);
 // Получение информации о приложении для запуска
 $route = $DI->getServices('router')->getAppInfo();
 
-
 try
 {
 	// Создание объекта приложения

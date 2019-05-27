@@ -25,29 +25,62 @@
 		 * @param string $path
 		 * @return array
 		 */
-		public function getInfoPageFromPath(string $path)
+		public function getDataPageFromPath(string $path)
 		{
+			// Default
 			$result = [
-				'type' => 'error',
-				'name' => 404
+				'data'  => null,
+				'unique'=> null,
+				'errors'=> false
 			];
+			// Проверяем алиасы
+			$alias = $this->checkAliasFromPath($path);
 			
-			$split = $this->splitParentsFromPath($path);
-			
-			if (empty($unique = $split['name']))
-			{	$result = [
-					'type' => 'index'
-				];
-				$unique = $this->getIndexId();
+			//  Если найден алиас пути
+			if ($alias)
+			{
+				$unique = $alias;
+			}
+			else
+			{
+				$split = $this->splitParentsFromPath($path);
+				
+				$unique = ( ( empty($split['name']) ) ? $this->getIndexId() : $split['name'] );
 			}
 			
-			if ($object = $this->getObjectData($unique))
+			$result['unique'] = $unique;
+			
+			$data = $this->getElementData($unique);
+			
+			
+			if ($data)
 			{
-				if (empty($split['parents']) || (!empty($split['parents']) && $this->checkParentSequence($object, $parents=$split['parents'])))
+				//Common::print($split,$data);
+				if (
+					($alias)
+					||
+					(empty($split['name']) && empty($split['parents']) && $this->DI->getModule('main')->options->getValue('index') == $data['id'])
+					||
+					(!empty($split['parents']) && $this->checkParentSequence($data, $split['parents']))
+				)
 				{
-					
-					$result = $object;
+					if ($this->checkAccess($data))
+					{
+						$result['data'] = $data;
+					}
+					else
+					{
+						$result['error'] = 403;
+					}
 				}
+				else
+				{
+					$result['error'] = 404;
+				}
+			}
+			else
+			{
+				$result['error'] = 404;
 			}
 			
 			return $result;
@@ -72,7 +105,7 @@
 			preg_match('#^/*(?:((?:[^/]+/?)*)/)*([^/]*)/*$#', $path, $matches);
 			
 			$result = [
-				'name'    => $matches[2],
+				'name'    => !empty($matches[2]) ? $matches[2] : null,
 				'parents' => !empty($matches[1]) ? $matches[1] : null
 			];
 			
@@ -91,9 +124,9 @@
 		 * @param $unique
 		 * @return array|false
 		 */
-		public function getObjectData($unique)
+		public function getElementData($unique)
 		{
-			return $this->DI->getModule('main')->objects->get($unique);
+			return $this->DI->getModule('main')->elements->get($unique);
 		}
 		
 		public function checkAccess($pageInfo)
@@ -108,5 +141,24 @@
 			{
 				return true;
 			}
+		}
+		
+		private function checkAliasFromPath(string $path)
+		{
+			//TODO: Написать метод проверки алиасов Uri
+			
+			$result = $this->DI->getServices('db')
+				->select()
+				->from('aliases')
+				->where([
+					'path' => $path
+				])
+				->one();
+			if ($result)
+			{
+				return $result['object'];
+			}
+			
+			return false;
 		}
 	}

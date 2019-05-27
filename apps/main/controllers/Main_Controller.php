@@ -32,17 +32,18 @@
 			// Родительский конструктор
 			parent::__construct($DI, $route);
 			
-			// Модель
+			// Подключаем модель
 			$this->model = new Main_Model($DI);
-			// Представление
+			// Подключаем представление
 			$this->view  = new Main_View($DI);
 			
 			
 			$path = $route['uri']['path'];
-			$pageInfo = $this->model->getInfoPageFromPath($path);
+			$result = $this->model->getDataPageFromPath($path);
 			
-			$access = $this->model->checkAccess($pageInfo);
-			Common::print('info :', $pageInfo);
+			$this->view->render($result['unique'], $result['data'], $result['error']);
+			
+			Common::print('$result :', $result);
 			
 			
 			$allObjects = $this->DI->getServices('db')

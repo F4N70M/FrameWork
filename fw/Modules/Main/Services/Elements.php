@@ -8,12 +8,12 @@
 	
 	use fw\DI\DI;
 	
-	class Objects
+	class Elements
 	{
 		public $DI;
 		
 		/**
-		 * Objects constructor.
+		 * Elements constructor.
 		 * @param DI $DI
 		 */
 		public function __construct(DI $DI)
